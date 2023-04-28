@@ -4,13 +4,21 @@ body{
   margin: 0;
   background-image: url('background.jpg');
   background-size: auto;
+  font-family: Arial Narrow ;
   }
-.wrapper td, .wrapper th{
+.wrapper td{
   padding:.5%;
   text-transform: capitalize;
   text-align: left;
   border-bottom: 1px solid #fff;
   font-size: clamp(12px, 2vw, 18px);
+}
+.wrapper th{
+  padding:.5%;
+  text-transform: capitalize;
+  text-align: left;
+  border-bottom: 1px solid #fff;
+  font-size: clamp(12px, 2vw, 16px);
 }
 h2{
   text-align: center;
@@ -40,7 +48,7 @@ tr:not(:first-child) th{
 }
 .wrapper{
   width:100%;
-  max-width:500px;
+  max-width:600px;
   position: relative;
   margin: 0 auto;
   padding:15px;
@@ -138,8 +146,8 @@ table{width:100%;}
 .recharts-label tspan, .recharts-cartesian-axis-tick-value tspan{
   font-size: clamp(14px, 2vw, 20px);
 }
-.recharts-label tspan{
-  font-family: Helvetica ;
+.recharts-xAxis .recharts-label tspan{
+  font-size: clamp(24px, 3vw, 30px);
 }
 .recharts-cartesian-axis-tick-value{
   text-transform: capitalize;
