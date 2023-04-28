@@ -4,12 +4,12 @@ import React, { PureComponent } from 'react';
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LabelList, ReferenceLine } from 'recharts';
 
 export default function HomePage() {
-  
   const [tdata, settdata] = useState([]);
   const [chartData, setchartData] = useState([]);
   function domywork(rData){
     let content = [];
     let renderLineChart = [];
+    document.getElementById("wrapper").style.opacity = "1";
     for (let j = 1; j <= 12; j++) {
       let tempChart = [];
       let monthName = getMonthName(j);
@@ -25,7 +25,6 @@ export default function HomePage() {
       let theKeys = Object.keys(rData.months[j]);
       let theRow = [];
       theKeys.forEach((a) => {
-        console.log(rData.months[j][a].feelslikemax);
         let abbr = rData.cities[a].substring(0, 3);
         let canadaPos = rData.cities[a].toUpperCase().indexOf("CANADA");
         let shorterName = rData.cities[a].substring(0, canadaPos);
@@ -45,7 +44,6 @@ export default function HomePage() {
                   </tr>);
       });
       content.push(<>{theRow}</>);
-
       renderLineChart[j] = (
       <ResponsiveContainer width="100%" height="100%">
         <BarChart
@@ -95,8 +93,8 @@ export default function HomePage() {
   }
 
   return (
-    <div><button onClick={() => getData()}>Get Data</button>
-    <div className='wrapper monthly_wrapper'>
+    <div><button onClick={() => getData()}>Calculate Monthy Averaves</button>
+    <div className='monthly_wrapper' id='wrapper'>
       <table><tbody>{tdata}</tbody></table>
     </div>
     <div className='chart_wrapper'>
