@@ -1,15 +1,17 @@
 import { useState } from 'react';
 import axios from "axios";
-import React, { PureComponent } from 'react';
+import React, { PureComponent, useEffect } from 'react';
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LabelList, ReferenceLine } from 'recharts';
 
 export default function HomePage() {
+
   const [tdata, settdata] = useState([]);
   const [chartData, setchartData] = useState([]);
   function domywork(rData){
     let content = [];
     let renderLineChart = [];
     document.getElementById("wrapper").style.opacity = "1";
+    document.getElementById("theGraphs").style.opacity = "1";
     for (let j = 1; j <= 12; j++) {
       let tempChart = [];
       let monthName = getMonthName(j);
@@ -35,8 +37,8 @@ export default function HomePage() {
         tempChart.push({name: abbr, temp: tempCasted});
         theRow.push(<tr>
                     <td>{shorterName}</td>
-                    <td>{rData.months[j][a].feelslikemax}</td>
-                    <td>{rData.months[j][a].feelslikemin}</td>
+                    <td className="flmax">{rData.months[j][a].feelslikemax}</td>
+                    <td className="flmin">{rData.months[j][a].feelslikemin}</td>
                     <td>{rData.months[j][a].tempmax}</td>
                     <td>{rData.months[j][a].tempmin}</td>
                     <td>{rData.months[j][a].windspeed}</td>
@@ -57,12 +59,12 @@ export default function HomePage() {
             bottom: 50,
           }}
         >
-          <XAxis dataKey="name" label={{ value: monthName, position: "outsideBottom", dy: 30, fill: '#008'}} style={{fontFamily: 'Helvetica ',}}/>
+          <XAxis dataKey="name" label={{ value: monthName, position: "outsideBottom", dy: 30, fill: '#2670AF'}} style={{fontFamily: 'Helvetica ',}}/>
           <YAxis type="number" domain={[-12, 28]} width={50} tickCount={10}/>
             <ReferenceLine y={0} stroke="#000" />
           <Tooltip />
           <Bar dataKey="temp" fill="#880000" >
-            <LabelList dataKey="temp" position="top" fill='#008'/>
+            <LabelList dataKey="temp" position="top" fill='#2670AF'/>
           </Bar>
         </BarChart>
       </ResponsiveContainer>
@@ -89,19 +91,28 @@ export default function HomePage() {
             })
             .catch(error => {
               console.log(error);
-            })
+            });
   }
-
+    useEffect(() => {
+      document.getElementById("getButton").style.boxShadow  = "2px 2px 30px 8px #fff";
+    }, []);
   return (
-    <div><button onClick={() => getData()}>Calculate Monthy Averaves</button>
-    <div className='monthly_wrapper' id='wrapper'>
+    <div><button id="getButton" onClick={() => getData()}>Calculate Monthy Averaves</button>
+    <div id='wrapper'>
+    <h2>Monthly Average Data</h2>
+    <a href="#theGraphs" id="graphsLink"><button>Cool Graphs &#x2B07;</button></a>
       <table><tbody>{tdata}</tbody></table>
+      
     </div>
-    <div className='chart_wrapper'>
+    
+    <div className='chart_wrapper' id="theGraphs">
+      <h2>Feels Like Max Monthly Graphs</h2>
       {chartData}
     </div>
     </div>
   );
+
+  
 }
 function getMonthName(monthNumber) {
   const date = new Date();

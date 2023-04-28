@@ -1,50 +1,10 @@
-*{box-sizing: border-box;}
+*{box-sizing: border-box;}a {text-decoration: none;}table{width:100%;}
 body{
   padding: 5px;
   margin: 0;
   background-image: url('background.jpg');
   background-size: auto;
   font-family: Arial Narrow ;
-  }
-#wrapper td{
-  padding:.5%;
-  text-transform: capitalize;
-  text-align: left;
-  border-bottom: 1px solid #fff;
-  font-size: clamp(12px, 2vw, 18px);
-}
-#wrapper th{
-  padding:.5%;
-  text-transform: capitalize;
-  text-align: left;
-  border-bottom: 1px solid #fff;
-  font-size: clamp(12px, 2vw, 16px);
-}
-h2{
-  text-align: center;
-  display: block;
-  margin: 0 auto;
-  padding:1em 0;
-  background-color:#55a;
-  color:#fff;
-}
-h3{
-  display: inline-block;
-  font-size:24px;
-  text-transform: capitalize;
-  margin-top: 0px;
-  margin-bottom: 10px;
-}
-tr:not(:first-child) th{
-  padding-top: 50px;
-}
-.flmax{
-  color:#800;
-  font-weight:900;
-}
-.flmin{
-  color:#008;
-  font-weight:900;
 }
 #wrapper{
   opacity: 0;
@@ -59,80 +19,55 @@ tr:not(:first-child) th{
   margin: 10px auto;
   box-shadow:1px 1px 5px 3px rgba(255,255,255,.4);
 }
-.monthly_wrapper{
-  background-color: #fef;
-  
+#wrapper td{
+  padding:.5%;
+  text-transform: capitalize;
+  text-align: center;
+  border-bottom: 1px solid #fff;
+  font-size: clamp(12px, 2vw, 18px);
 }
-.average_wrapper{
-  background-color: #eff;
+#wrapper td:first-child{
+  text-align: left;
 }
-table{width:100%;}
-#monthly_wrapper{
-  margin-top:88px;
-  position: relative;
+#wrapper th{
+  padding:.5%;
+  text-transform: capitalize;
+  text-align: center;
+  border-bottom: 1px solid #fff;
+  font-size: clamp(12px, 2vw, 16px);
 }
-#top_menu{
-  top:0;
-  position: fixed;
+h2{
+  text-align: center;
   display: block;
-  width:100%;
-  padding:10px 20px;
-  background: #eff;
-  text-align: center;
-  z-index: 1000;
-}
-#top_menu a{
-  display: inline-block;
-  position: relative;
-  transition: all ease 0.3s;
-  background-color: #003;
-  color:#fff;
-  padding:5px 15px;
-  border-radius: 10px;
-  margin: 5px 5px;
-  text-decoration:none;
-}
-#top_menu a:hover{
-  background-color: #fff;
-  color:#003;
-}
-.graph_container{
-  display: flex;
-  position: relative;
-}
-.bar_container{
-  position: relative;
-  flex:1;
-  padding: 0 5px;
-  text-align: center;
-  font-size:14px;
-}
-.bar{
-  font-size:12px;
-  position: relative;
   margin: 0 auto;
-  min-height: 200px;
-  width:90%;
-  padding-top:10px;
-  max-width:40px;
-  border-radius:20px;
-  margin-bottom: 10px;
-  box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(0, 0, 0, .4);
+  padding:1em 0;
+  background-color:#2670AF;
+  color:#fff;
 }
-.city_abr, .city_full{
-  text-transform:capitalize;
-}
-.city_abr{display: none;}
-.city_full{display: block;}
-.graph_wrapper h3{
-  margin-top: 30px;
-}
-.graph_wrapper h3:first-child{
+h3{
+  display: inline-block;
+  font-size:24px;
+  text-transform: capitalize;
   margin-top: 0px;
+  margin-bottom: 10px;
 }
+#wrapper tr:not(:first-child) th{
+  padding-top: 50px;
+}
+.flmax{
+  color:#800;
+  font-weight:600;
+}
+.flmin{
+  color:#008;
+}
+
+#theGraphs{opacity: 0;transition: all 2.00s; margin-top: 30px;}
+
+
 .chart_wrapper{
   height:40vw;
-  max-width:500px;
+  max-width:600px;
   min-height: 250px;
   max-height: 400px;
   position: relative;
@@ -141,11 +76,15 @@ table{width:100%;}
 .recharts-wrapper{
   background:rgba(255,255,255,.8);
   height:30vw;
-  max-width:500px;
+  max-width:600px;
   min-height: 250px;
   max-height: 400px;
   position: relative;
   margin: 10px auto;
+  transition: all 0.3s;
+}
+.recharts-wrapper:hover{
+  background:rgba(255,255,255, 1);
 }
 .recharts-label tspan, .recharts-cartesian-axis-tick-value tspan{
   font-size: clamp(14px, 2vw, 20px);
@@ -156,14 +95,37 @@ table{width:100%;}
 .recharts-cartesian-axis-tick-value{
   text-transform: capitalize;
 }
-body iframe{display: none !important;}
-@media (max-width: 581px){
-  .city_abr{display: block;}
-  .city_full{display: none;}
-  #monthly_wrapper{
-    margin-top:120px;
-  }
-  .bar{
-    font-size:10px;
-  }
+#getButton{
+  position: relative;
+  display: block;
+  margin: 20px auto;
+  padding:.5% 1%;
+  border-radius: 5px;
+  background-color:#2670AF;
+  color:#fff;
+  border:0;
+  font-size: clamp(18px, 2.5vw, 24px);
+  transition: all 1.00s, background-color 0.50s;
+  box-shadow: 0px 0px 0px 0px #fff;
+}
+#getButton:hover{
+  background-color:#06508F;
+  color:#ffec53;
+}
+#graphsLink button{
+  position: relative;
+  display: block;
+  margin: 20px auto;
+  padding:.5% 1%;
+  border-radius: 5px;
+  background-color:#3A5F0B;
+  color:#fff;
+  border:0;
+  font-size: clamp(14px, 2vw, 18px);
+  transition: all 1.00s, background-color 0.50s;
+  cursor: pointer;
+}
+#graphsLink button:hover{
+  color:#ffec53;
+  background-color:#1A3F0B ;
 }
