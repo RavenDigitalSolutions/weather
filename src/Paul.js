@@ -60,7 +60,7 @@ export default function HomePage() {
   function getData(){
       const config = {
         method: 'GET',
-        url: 'https://rweather.ravenisle.com/get_averages.php',
+        url: 'https://rweather.ravenisle.com/get_flmax.php',
         headers: {
           'Access-Control-Allow-Origin': '*'
         },
