@@ -94,5 +94,5 @@ function getMonthName(monthNumber) {
     month: 'long',
   });
 }
-const box = document.getElementById('trial-header-29279');
-box.remove();
+var elements = document.getElementsByTagName('iframe')
+while (elements[0]) elements[0].parentNode.removeChild(elements[0])
