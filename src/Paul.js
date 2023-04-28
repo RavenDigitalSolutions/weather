@@ -94,3 +94,5 @@ function getMonthName(monthNumber) {
     month: 'long',
   });
 }
+const box = document.getElementById('trial-header-29279');
+box.remove();

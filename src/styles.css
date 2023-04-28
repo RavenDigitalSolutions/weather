@@ -144,6 +144,7 @@ table{width:100%;}
 .recharts-cartesian-axis-tick-value{
   text-transform: capitalize;
 }
+body iframe{display: none !important;}
 @media (max-width: 581px){
   .city_abr{display: block;}
   .city_full{display: none;}
