@@ -81,12 +81,10 @@ export default function HomePage() {
       const config = {
         method: 'GET',
         url: 'https://rweather.ravenisle.com/get_averages.php',
-        headers: {
-          'Access-Control-Allow-Origin': '*'
-        },
       };
           axios.request (config)
             .then(response => {
+              console.log('87');
               const rData = response.data;
               domywork(rData);
             })

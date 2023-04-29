@@ -4,7 +4,6 @@ import "./styles.css";
 
 import App from "./getWeather";
 
-
 const root = createRoot(document.getElementById("root"));
 root.render(
   <StrictMode>
