@@ -15,6 +15,7 @@ export default function HomePage() {
     for (let j = 1; j <= 12; j++) {
       let tempChart = [];
       let monthName = getMonthName(j);
+      console.log(j);console.log(monthName);
       content.push(<tr>
                    <th><h3 key={monthName} className="{monthName}">{monthName}</h3></th>
                    <th>Feels Like<br />Max</th>
