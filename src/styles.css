@@ -21,7 +21,6 @@ body{
 }
 #wrapper td{
   padding:.5%;
-  text-transform: capitalize;
   text-align: center;
   border-bottom: 1px solid #fff;
   font-size: clamp(12px, 2vw, 18px);

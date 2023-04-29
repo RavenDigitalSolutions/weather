@@ -31,6 +31,7 @@ export default function HomePage() {
         let canadaPos = rData.cities[a].toUpperCase().indexOf("CANADA");
         let shorterName = rData.cities[a].substring(0, canadaPos);
         shorterName = shorterName.replace("Ontario", "On");
+        shorterName = shorterName.replace("ontario", "On");
         shorterName = shorterName.replace("Bc", "BC");
         shorterName = shorterName.replace("Nova Scotia", "NS");
         let tempCasted = Number(rData.months[j][a].feelslikemax);
