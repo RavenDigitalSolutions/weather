@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from "axios";
-import React, { PureComponent, useEffect } from 'react';
-import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LabelList, ReferenceLine } from 'recharts';
+import React, { useEffect } from 'react';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, LabelList, ReferenceLine } from 'recharts';
 
 export default function HomePage() {
 
