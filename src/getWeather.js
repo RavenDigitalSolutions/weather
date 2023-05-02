@@ -2,9 +2,7 @@ import { useState } from 'react';
 import axios from "axios";
 import React, { useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, LabelList, ReferenceLine } from 'recharts';
-
 export default function HomePage() {
-
   const [tdata, settdata] = useState([]);
   const [chartData, setchartData] = useState([]);
   function domywork(rData){
@@ -84,7 +82,6 @@ export default function HomePage() {
       };
           axios.request (config)
             .then(response => {
-              console.log('87');
               const rData = response.data;
               domywork(rData);
             })
@@ -96,22 +93,18 @@ export default function HomePage() {
       document.getElementById("getButton").style.boxShadow  = "2px 2px 30px 8px #fff";
     }, []);
   return (
-    <div><button id="getButton" onClick={() => getData()}>Calculate Monthy Averaves</button>
+    <div><button id="getButton" onClick={() => getData()}>Calculate Monthy Averages</button>
     <div id='wrapper'>
     <h2>Monthly Average Data</h2>
     <a href="#theGraphs" id="graphsLink"><button>Cool Graphs &#x2B07;</button></a>
       <table><tbody>{tdata}</tbody></table>
-      
     </div>
-    
     <div className='chart_wrapper' id="theGraphs">
       <h2>Feels Like Max Monthly Graphs</h2>
       {chartData}
     </div>
     </div>
   );
-
-  
 }
 function getMonthName(monthNumber) {
   const date = new Date();
@@ -121,4 +114,3 @@ function getMonthName(monthNumber) {
     month: 'long',
   });
 }
-
