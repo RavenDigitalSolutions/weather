@@ -13,8 +13,8 @@ export default function HomePage() {
     for (let j = 1; j <= 12; j++) {
       let tempChart = [];
       let monthName = getMonthName(j);
-      content.push(<tr>
-                   <th><h3 key={monthName} className="{monthName}">{monthName}</h3></th>
+      content.push(<tr key={monthName}>
+                   <th key={'monthName' + j + monthName}><h3 key={'monthName' + j} className="{monthName}">{monthName}</h3></th>
                    <th>Feels Like<br />Max</th>
                    <th>Feels Like<br />Min</th>
                    <th>Hi Temp</th>
@@ -34,20 +34,21 @@ export default function HomePage() {
         shorterName = shorterName.replace("Nova Scotia", "NS");
         let tempCasted = Number(rData.months[j][a].feelslikemax);
         tempChart.push({name: abbr, temp: tempCasted});
-        theRow.push(<tr>
-                    <td>{shorterName}</td>
-                    <td className="flmax">{rData.months[j][a].feelslikemax}</td>
-                    <td className="flmin">{rData.months[j][a].feelslikemin}</td>
-                    <td>{rData.months[j][a].tempmax}</td>
-                    <td>{rData.months[j][a].tempmin}</td>
-                    <td>{rData.months[j][a].windspeed}</td>
-                    <td>{rData.months[j][a].humidity}</td>
+        theRow.push(<tr key={'shorterName' + j + a + shorterName}>
+                    <td key={'shorterName' + j + a + monthName + shorterName}>{shorterName}</td>
+                    <td className="flmax" key={'feelslikemax' + j + a + shorterName + rData.months[j][a].feelslikemax}>{rData.months[j][a].feelslikemax}</td>
+                    <td className="flmin" key={'feelslikemin' + j + a + shorterName + rData.months[j][a].feelslikemin}>{rData.months[j][a].feelslikemin}</td>
+                    <td key={'tempmax' + j + a + shorterName + rData.months[j][a].tempmax}>{rData.months[j][a].tempmax}</td>
+                    <td key={'tempmin' + j + a + shorterName + rData.months[j][a].tempmin}>{rData.months[j][a].tempmin}</td>
+                    <td key={'windspeed' + j + a + shorterName + rData.months[j][a].windspeed}>{rData.months[j][a].windspeed}</td>
+                    <td key={'humidity' + j + a + shorterName + rData.months[j][a].humidity}>{rData.months[j][a].humidity}</td>
                   </tr>);
       });
       content.push(<>{theRow}</>);
       renderLineChart[j] = (
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width="100%" height="100%" key={"chart" +j}>
         <BarChart
+          key={"BarChart" +j}
           width={500}
           height={300}
           data={tempChart}
@@ -69,8 +70,6 @@ export default function HomePage() {
       </ResponsiveContainer>
       );
       setchartData(renderLineChart);
-      renderLineChart.forEach((cvalue, ckey) => {
-      });
     }
     settdata(content);
     return content;
@@ -93,13 +92,13 @@ export default function HomePage() {
       document.getElementById("getButton").style.boxShadow  = "2px 2px 30px 8px #fff";
     }, []);
   return (
-    <div><button id="getButton" onClick={() => getData()}>Calculate Monthy Averages</button>
+    <div><button id="getButton" onClick={() => getData()} key="getButton">Calculate Monthy Averages</button>
     <div id='wrapper'>
     <h2>Monthly Average Data</h2>
     <a href="#theGraphs" id="graphsLink"><button>Cool Graphs &#x2B07;</button></a>
-      <table><tbody>{tdata}</tbody></table>
+      <table key="graphsLinkbody"><tbody key="graphsLinkbody">{tdata}</tbody></table>
     </div>
-    <div className='chart_wrapper' id="theGraphs">
+    <div className='chart_wrapper' id="theGraphs" key="theGraphs">
       <h2>Feels Like Max Monthly Graphs</h2>
       {chartData}
     </div>
