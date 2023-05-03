@@ -34,7 +34,7 @@ export default function HomePage() {
         shorterName = shorterName.replace("Nova Scotia", "NS");
         let tempCasted = Number(rData.months[j][a].feelslikemax);
         tempChart.push({name: abbr, temp: tempCasted});
-        theRow.push(<tr key={'shorterName' + j + a + shorterName}>
+        content.push(<tr key={'shorterName' + j + a + shorterName}>
                     <td key={'shorterName' + j + a + monthName + shorterName}>{shorterName}</td>
                     <td className="flmax" key={'feelslikemax' + j + a + shorterName + rData.months[j][a].feelslikemax}>{rData.months[j][a].feelslikemax}</td>
                     <td className="flmin" key={'feelslikemin' + j + a + shorterName + rData.months[j][a].feelslikemin}>{rData.months[j][a].feelslikemin}</td>
@@ -44,7 +44,7 @@ export default function HomePage() {
                     <td key={'humidity' + j + a + shorterName + rData.months[j][a].humidity}>{rData.months[j][a].humidity}</td>
                   </tr>);
       });
-      content.push(<>{theRow}</>);
+      
       renderLineChart[j] = (
       <ResponsiveContainer width="100%" height="100%" key={"chart" +j}>
         <BarChart
@@ -96,7 +96,7 @@ export default function HomePage() {
     <div id='wrapper'>
     <h2>Monthly Average Data</h2>
     <a href="#theGraphs" id="graphsLink"><button>Cool Graphs &#x2B07;</button></a>
-      <table key="graphsLinkbody"><tbody key="graphsLinkbody">{tdata}</tbody></table>
+      <table key="graphsLinktable"><tbody key="graphsLinkbody">{tdata}</tbody></table>
     </div>
     <div className='chart_wrapper' id="theGraphs" key="theGraphs">
       <h2>Feels Like Max Monthly Graphs</h2>
